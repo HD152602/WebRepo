@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+	.yellow {
+		background-color: yellow;
+	}
+	.blue {
+			background-color: blue;
+	}
+	
+	.white {
+			background-color: white;
+	}
+	
+	.border {
+		border: 3px solid red;
+	}
+</style>
+<script type="text/javascript">
+	function changeColor(color) {
+		var c = document.getElementById("d");
+		c.setAttribute("class",color);
+	}
+	function up(text) {
+	
+		text.value = text.value.toUpperCase();;
+	}
+	function mouse(value, box) {
+		if(value=="on") {
+			box.setAttribute("class","border");
+		}
+		else if(value=="off"){
+			box.removeAttribute("class");
+		}
+	}
+</script>
+</head>
+<body onload="alert('웹페이지 로딩 됨^^');">
+<div id="d">	
+	<input type="radio" value="yellow" onclick="changeColor(this.value);" name="color">노랑 <input type="radio" value="blue" onclick="changeColor(this.value);" name="color">파랑<input type="radio" value="white" onclick="changeColor(this.value);" name="color">원래대로<br>
+	<input type="text" onchange="up(this);"><br>
+	<div id="box" onmouseenter="mouse('on',this);" onmouseout="mouse('off',this);">
+	마우스를 위에 올려놓으세요
+	</div>
+</div>
+</body>
+</html>

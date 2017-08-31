@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function sum() {
+		var num = Number(document.getElementById("va").value);
+		var sum=0;
+		for(i=1; i<=num; i++) {
+			sum+=i;
+		}
+		document.getElementById("sum").innerHTML = "1부터 "+num+"까지의 합은 "+sum+"입니다.";
+	}
+</script>
+</head>
+<body>
+	<input type="text" id="va">
+	<input type="button" value="계산" onclick="sum();" >
+	<p id="sum"></p>
+</body>
+</html>
