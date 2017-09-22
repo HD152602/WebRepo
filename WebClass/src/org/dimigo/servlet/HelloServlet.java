@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class HelloServlet
  */
-@WebServlet(description = "√ππ¯¬∞ º≠∫Ì∏¥", urlPatterns = { "/hello" })
+@WebServlet(description = "first servlet", urlPatterns = { "/hello" })
 public class HelloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -34,7 +34,7 @@ public class HelloServlet extends HttpServlet {
 		String name = request.getParameter("name");
 
 		response.setContentType("text/html");
-		response.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("UTF-8");
 
 		 PrintWriter out = response.getWriter();
 		 out.println("<!DOCTYPE html>");
@@ -43,7 +43,7 @@ public class HelloServlet extends HttpServlet {
 		 out.println("<title>yeah!</title>");
 		 out.println("</head>");
 		 out.println("<body>");
-		 out.println("<h1>Hello Servlet! π›∞©π›∞©</h1>");
+		 out.println("<h1>Hello Servlet! hihi</h1>");
 		 out.println("<h2>id : "+id+" / name : "+name+"</h2>");
 		 out.println("</body></html>");
 		 out.close();
@@ -54,24 +54,24 @@ public class HelloServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("doPost() »£√‚µ ");
+		System.out.println("doPost() ");
 		doGet(request, response);
 	}
 	@Override
 	public void init() throws ServletException {
-		System.out.println("init() »£√‚");
+		System.out.println("init() ");
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("service() »£√‚");
+		System.out.println("service() ");
 		super.service(req, resp);
 		
 	}
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
-		System.out.println("destroy() »£√‚");
+		System.out.println("destroy() ");
 	}
 
 }
