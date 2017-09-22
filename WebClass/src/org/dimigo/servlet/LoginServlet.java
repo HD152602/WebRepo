@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		System.out.printf("id : %s, pwd : %s\n",id,pw);
