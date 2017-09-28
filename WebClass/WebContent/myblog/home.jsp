@@ -59,15 +59,15 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form id="login">
+						<form id="login" action="/WebClass/bloglogin">
 							<div class="form-group">
 								<label>Id</label> <input type="text"
-									class="form-control" id="Id" required="required">
+									class="form-control" id="Id" required="required" name="id">
 							</div>
 							<div class="form-group">
 								<label>Password</label> <input
 									type="password" class="form-control"
-									required="required">
+									required="required" name="pw">
 							</div>
 							<button type="submit" class="btn btn-primary" >Login</button>
 							<button type="submit" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -148,7 +148,10 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title">환영합니다!</h5>
+						<h5 class="modal-title">
+						<% %>
+						
+						환영합니다!</h5>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
