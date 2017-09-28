@@ -65,12 +65,20 @@ public class SignUpServlet extends HttpServlet {
 			user.setId(id);
 			user.setName(name);
 			user.setNick(nickname);
+			user.setPw(pw);
 			session.setAttribute("user", user);
-			RequestDispatcher rd = request.getRequestDispatcher("jsp/home.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("jsp/login.jsp");
 			rd.forward(request, response);
 			
 		}
 		else {
+			HttpSession session = request.getSession();
+			UserVo user = new UserVo();
+			user.setId(id);
+			user.setName(name);
+			user.setNick(nickname);
+			user.setPw(pw);
+			session.setAttribute("user", user);
 			request.setAttribute("msg", "error");
 			RequestDispatcher rd = request.getRequestDispatcher("jsp/signup.jsp");
 			rd.forward(request, response);

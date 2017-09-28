@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="org.dimigo.vo.UserVo" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,147 +36,35 @@
 				<li class="nav-item"><a class="nav-link" href="todo.html">What
 						to do</a></li>
 			</ul>
-			<form class="form-inline my-2 my-lg-0">
+			<form class="form-inline my-2 my-lg-0" action="/WebClass/bloglogout">
 				<div class="btn-group" role="group" aria-label="Basic example">
-					<button type="button" class="btn btn-secondary" onclick="sin();">Sign
+				<%UserVo user = (UserVo)(session.getAttribute("user")); if(user==null){ %>
+					<button type="button" class="btn btn-secondary" onclick="location.href='login.jsp'" >Sign
 						in</button>
-					<button type="button" class="btn btn-secondary" onclick="sup();">Sign
-						up</button>
+				<%} else { %>
+					<button type="submit" class="btn btn-secondary">Sign
+						out</button>
+				<%} %>
 				</div>
 			</form>
 		</div>
 	</nav>
 
 
-
-		<div class="modal" id="signin">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">로그인</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<form id="login" action="/WebClass/bloglogin">
-							<div class="form-group">
-								<label>Id</label> <input type="text"
-									class="form-control" id="Id" required="required" name="id">
-							</div>
-							<div class="form-group">
-								<label>Password</label> <input
-									type="password" class="form-control"
-									required="required" name="pw">
-							</div>
-							<button type="submit" class="btn btn-primary" >Login</button>
-							<button type="submit" class="btn btn-primary" data-dismiss="modal">Close</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-		<div class="modal" id="signup">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">회원가입</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<form id="s">
-							<div class="form-group">
-								<label>학년</label><br>
-								<div class="form-check form-check-inline">
-	  							<label class="form-check-label">
-	    							<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked> 1학년
-	  							</label>
-								</div>
-								<div class="form-check form-check-inline">
-	  							<label class="form-check-label">
-	    							<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2학년
-	  							</label>
-								</div>
-								<div class="form-check form-check-inline">
-	  							<label class="form-check-label">
-	    							<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3학년
-	  							</label>
-								</div>
-							</div>
-							<div class="form-group">
-								<label>반</label>
-								<div class="form-group">
-	    						<select class="form-control" id="exampleFormControlSelect1">
-	      						<option>1반</option>
-	      						<option>2반</option>
-	      						<option>3반</option>
-	      						<option>4반</option>
-										<option>5반</option>
-										<option>6반</option>
-									</select>
-								</div>
-							</div>
-							<div class="form-group">
-								<label>이름</label> <input type="text"
-									class="form-control" required="required">
-							</div>
-							<div class="form-group">
-								<label>Id</label> <input type="text"
-									class="form-control" id="Id1" required="required">
-							</div>
-							<div class="form-group">
-								<label>Password</label> <input
-									type="password" class="form-control" required="required"
-									>
-							</div>
-							<button type="submit" class="btn btn-primary" >Submit</button>
-							<button type="submit" class="btn btn-primary" data-dismiss="modal">Close</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-
-		<div class="modal" id="mymodal">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">
-						<% %>
-						
-						환영합니다!</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<p></p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal" onclick="c();">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
 		<div class="jumbotron">
-			<h1 class="display-3">어서오세요!</h1>
+			<h1 class="display-3">
+			<%
+    			if(user!=null) {
+   			%>
+   			<%=user.getName() %>님!
+			<%} %> 어서오세요!</h1>
 			<p class="lead">강태준의 개인 블로그 입니다.</p>
 			<hr class="my-4">
 			<p>
 				<br>made by 2602
 			</p>
 		</div>
+	<%@ include file="modal.jsp" %>
 
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script
@@ -187,5 +76,16 @@
 		integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
 		crossorigin="anonymous"></script>
 	<script src="../js/submit.js"></script>
+	<script>
+	<%-- 로그인이 실패한 경우 처리 추가 --%>
+	<%
+	if("error".equals(request.getAttribute("msg"))) {
+	%>
+		var myModal = $('#mymodal');
+		myModal.find('.modal-title').text('Login Error');
+		myModal.find('.modal-body').text('Invalid username or password');
+		myModal.modal();
+		<% }%>
+</script>
 </body>
 </html>
