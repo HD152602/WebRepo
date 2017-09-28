@@ -1,7 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>KangTaeJun | Student in Dimigo</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
@@ -14,7 +16,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light"
 		style="background-color: #13FFB5;">
-		<a class="navbar-brand" href="index.html"> <img src="../image/t.png"
+		<a class="navbar-brand" href="home.jsp"> <img src="../image/t.png"
 			width="35" height="35" class="d-inline-block align-top" alt="">
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
