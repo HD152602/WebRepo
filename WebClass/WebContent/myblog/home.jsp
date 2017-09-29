@@ -10,14 +10,14 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
 	integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
 	crossorigin="anonymous">
-<script src="../js/blog.js"></script>
-<link rel="stylesheet" href="../css/main.css">
+<script src="/WebClass/js/blog.js"></script>
+<link rel="stylesheet" href="/WebClass/css/main.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light"
 		style="background-color: #13FFB5;">
-		<a class="navbar-brand" href="home.jsp"> <img src="../image/t.png"
+		<a class="navbar-brand" href="/WebClass/myblog/home.jsp"> <img src="/WebClass/image/t.png"
 			width="35" height="35" class="d-inline-block align-top" alt="">
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -29,21 +29,19 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link" href="me.html">About
+				<li class="nav-item"><a class="nav-link" href="/WebClass/myblog/me.html">About
 						me</a></li>
-				<li class="nav-item"><a class="nav-link" href="like.html">What
+				<li class="nav-item"><a class="nav-link" href="/WebClass/myblog/like.html">What
 						I Like</a></li>
-				<li class="nav-item"><a class="nav-link" href="todo.html">What
+				<li class="nav-item"><a class="nav-link" href="/WebClass/myblog/todo.html">What
 						to do</a></li>
 			</ul>
-			<form class="form-inline my-2 my-lg-0" action="/WebClass/bloglogout">
+			<form class="form-inline my-2 my-lg-0">
 				<div class="btn-group" role="group" aria-label="Basic example">
-				<%UserVo user = (UserVo)(session.getAttribute("user")); if(user==null){ %>
-					<button type="button" class="btn btn-secondary" onclick="location.href='login.jsp'" >Sign
-						in</button>
+				<%UserVo user = (UserVo)(session.getAttribute("user")); if(user==null || user.getName()==null){ %>
+					<a href="/WebClass/bloglogin">Sign in</a>
 				<%} else { %>
-					<button type="submit" class="btn btn-secondary">Sign
-						out</button>
+				<a href="/WebClass/bloglogout">Sign out</a>
 				<%} %>
 				</div>
 			</form>
@@ -54,7 +52,7 @@
 		<div class="jumbotron">
 			<h1 class="display-3">
 			<%
-    			if(user!=null) {
+    			if(user!=null && user.getName()!=null) {
    			%>
    			<%=user.getName() %>님!
 			<%} %> 어서오세요!</h1>

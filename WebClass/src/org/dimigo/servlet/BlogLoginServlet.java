@@ -38,7 +38,7 @@ public class BlogLoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		RequestDispatcher rd = request.getRequestDispatcher("myblog/home.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("myblog/login.jsp");
 		rd.forward(request, response);
 	}
 
@@ -48,23 +48,17 @@ public class BlogLoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
 		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		
-		Gson gson = new Gson();
-		JsonObject json = new JsonObject();
-		json.addProperty("id",id);
-		String j = gson.toJson(json);
-		System.out.println(j);
-		out.write(j);
 		boolean result = "test@naver.com".equals(id);
 		
 		if(result) {
 			HttpSession session = request.getSession();
 			UserVo user = new UserVo();
 			user.setId(id);
+			user.setPw(pw);
 			user.setName("È«±æµ¿");
 			user.setNick("ÀÇÀû");
 			session.setAttribute("user", user);
@@ -73,11 +67,15 @@ public class BlogLoginServlet extends HttpServlet {
 			
 		}
 		else {
+			HttpSession session = request.getSession();
+			UserVo user = new UserVo();
+			user.setId(id);
+			user.setPw(pw);
+			session.setAttribute("user", user);
 			request.setAttribute("msg", "error");
 			RequestDispatcher rd = request.getRequestDispatcher("myblog/login.jsp");
 			rd.forward(request, response);
 		}
-		out.close();
 		
 	}
 }
