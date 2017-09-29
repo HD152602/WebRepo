@@ -50,18 +50,7 @@ $(document).ready(function() {
        var name = $('#inputName').val();
        var nickname = $('#inputNickName').val();
        
-       /*
-       $.post("/WebClass/signup2", {
-          "id" : id,
-          "pw" : pw,
-          "name" : name,
-          "nickname" : nickname
-          }, function(data) {
-        	  
-              window.location.href="/WebClass/jsp/login.jsp";
-          });
-       */
-       
+              
        $.post("/WebClass/signup2", {
            "id" : id,
            "pw" : pw,
